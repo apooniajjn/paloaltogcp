@@ -7,7 +7,7 @@ This repository includes two diff modules which performs below operation:
    - Please read `README.MD` file of this repo `terraform-palo-alto` to know more about it. 
 2. Once your VM series is deployed how to manage configuration using REST API 
    - We have deployed a VM series firewall instance on AWS manually so we can connect to Palo Alto Networks API (test purpose you can use any instance)
-   - Please read `README.MD` file of this repo `terraform-palo-alto` to know more about it.
+   - Please read `README.MD` file of this repo `palo-alto-api-python` to know more about it.
    
 # Feedback
 

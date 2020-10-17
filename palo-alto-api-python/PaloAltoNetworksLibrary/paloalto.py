@@ -60,10 +60,11 @@ class PaloAlto:
             return json.loads(response.text)
         else:
             raise Exception(json.loads(response.text))
-
+    
+    # Below function needs fixing
     @keyword("Create Addresses", tags=["Common", "Addresses"])
     def create_addresses(self, address_entry_name, location, vsys=None):
-        """Create Addresses in a Location/System.
+        """Create Addresses in a Location/System. 
 
         This method returns list Addresses.
         """
