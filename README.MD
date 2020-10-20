@@ -1,6 +1,6 @@
 # Palo Alto Networks VM Series Firewall
 
-This repository includes two diff modules which performs below operation: 
+This repository includes two diff modules which performs below operations: 
 
 1. Deploy VM series palo alto networks firewall on GCP 
    - We are using terraform to deploy VM series firewall on GCP 
@@ -11,4 +11,4 @@ This repository includes two diff modules which performs below operation:
    
 # Feedback
 
-Feedbacks are welcome, you can open issues too.
+Feedbacks are welcome and you can open issues too.

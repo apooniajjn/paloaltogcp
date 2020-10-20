@@ -1,8 +1,8 @@
 # PAN OS VM Series Firewall Configuration 
 
-This repository includes `python` library which end user can use with `Robot Framework`. This will allow end user to configuration firewall using keywords which will consume REST API accordingly. 
+This repository includes `python` library which end user can use with `Robot Framework`. This will allow end user to configure Palo Alto Networks firewall using keywords which are written around REST API. 
 
-Software version used: 
+Software versions used: 
 - PAN OS VM REST API version (v10.0)
 - Robot Framework (3.1.2)
 
@@ -10,20 +10,20 @@ Software version used:
 
 This repository has below prerequisites:
 
-1. I am using `spartan` helper which is nothing but `robot framework` cli so either you create a helper os use `robot` cli directly. 
+1. I am using `spartan` helper which is nothing but `robot framework` cli so either you create a new helper or use `robot` cli directly. 
 2. Update your PAN OS VM details in `variables.robot` file in `test-suites` directory. 
 
 ## How to Use 
 
-We have defined below keywords which will allow user to perform below few operations 
+We have defined few keywords which will allow end user to perform below operations 
 
 1. Generate API Key
 2. List Addresses
 3. List Security Policies
 
-You can always more keywords by adding functions in `paloalto.py` file in `PaloAltoNetworksLibrary`. 
+You can always add more keywords by adding python REST API functions in `paloalto.py` file in `PaloAltoNetworksLibrary`. 
 
-Below example show how I am getting address information and security policies on my `vsys1` system:
+Below example show how I am getting addresses information and security policies:
 
 **Example Output**: 
 
@@ -52,8 +52,8 @@ Report:  /Users/apoonia/Desktop/paloaltogcp/palo-alto-api-python/test-suites/tes
 
 I am summarizing few open items: 
 
-1. I noticed official pan os python sdk is too old 
-2. PAN OS Rest API doesn't have a swagger file so i can create python sdk file. 
-3. So I ended up consuming REST API using requests library 
+1. I noticed official `pan os python sdk` is too old 
+2. PAN OS Rest API doesn't have a swagger file so i couldn't create python sdk file. It would have been easier if they had python sdk for this.
+   - So I ended up consuming REST API CURD operation directly.
 
 User can use this repository as starting point and enhance it accordingly.
