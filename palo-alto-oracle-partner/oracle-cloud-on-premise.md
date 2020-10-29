@@ -17,8 +17,6 @@ In this guide I have included some steps which will end user to perform below op
    - Attach Internet Gateway to VPC
    - Make Sure Route Table has default route to Internet through Internet Gateway
 
-    ![Checks](./images/image1.png)
-
 2. Create a CPE VM on AWS
    - Choose CentOS Image
    - Create VM in mentioned region and select correct key-pair to access it afterwards (t2.medium)
@@ -28,7 +26,9 @@ In this guide I have included some steps which will end user to perform below op
      sudo yum -y install libreswan
      ```
    - Make sure you Source/Destination Check is disabled if not already
-     <<update image>>
+
+    ![Checks](./images/image1.png)
+
    - Connect to CPE VM and Update file(/etc/sysctl.conf) with following content and apply update using (sudo sysctl -p) command:
      ```
      net.ipv4.ip_forward=1
