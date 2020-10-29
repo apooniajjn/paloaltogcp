@@ -9,7 +9,10 @@ This repository includes two document which explains how can you use PANW VM Ser
 2. In document `oracle-panw-design-doc.md` below details are included: 
    - Understand a Use-Case from a Customer for a connectivity between oracle cloud and on premise networks
    - Create a network diagram to meet the requirements 
-   
+3. In module `oracle-test-terraform` below details are included: 
+   - A small example of how to use oracle terraform provider to configure Oracle Cloud
+   - Example: Example includes simple VCN creation in user's compartment 
+
 # Feedback
 
 Feedbacks are welcome and you can open issues too.
