@@ -1,9 +1,9 @@
-# PAN OS VM Series Firewall Configuration 
+# Oracle Cloud Configuration
 
-This repository includes `python` library which end user can use with `Robot Framework`. This will allow end user to configure Palo Alto Networks firewall using keywords which are written around REST API. 
+This repository includes `python` library which end user can use with `Robot Framework`. This will allow end user to configure Oracle Cloud using keywords which are written around Oracle API. 
 
 Software versions used: 
-- PAN OS VM REST API version (v10.0)
+- Oracle REST API version
 - Robot Framework (3.1.2)
 
 ## Prerequisites
@@ -11,49 +11,116 @@ Software versions used:
 This repository has below prerequisites:
 
 1. I am using `spartan` helper which is nothing but `robot framework` cli so either you create a new helper or use `robot` cli directly. 
-2. Update your PAN OS VM details in `variables.robot` file in `test-suites` directory. 
+2. Update your Oracle Cloud details in `variables.robot` file in `test-suites` directory. 
 
 ## How to Use 
 
-We have defined few keywords which will allow end user to perform below operations 
+We have defined few keywords which will allow end user to perform below operations:
 
-1. Generate API Key
-2. List Addresses
-3. List Security Policies
+1. Get User Details
+2. Get Namespace
+3. Create Bucket
+4. List Bucket
+5. Delete Bucket
 
-You can always add more keywords by adding python REST API functions in `paloalto.py` file in `PaloAltoNetworksLibrary`. 
+
+You can always add more keywords by adding python REST API functions in `oracle.py` file in `OracleLibrary`. 
 
 Below example show how I am getting addresses information and security policies:
 
 **Example Output**: 
 
 ```
-(colt-v1-2) ➜  test-suites git:(master) ✗ spartan --log-level trace policy.robot
 ==============================================================================
-Policy                                                                        
+Oracle                                                                        
 ==============================================================================
-Login to Palo Alto                                                    | PASS |
+Get User Details                                                      .{
+  "capabilities": {
+    "can_use_api_keys": true,
+    "can_use_auth_tokens": true,
+    "can_use_console_password": false,
+    "can_use_customer_secret_keys": true,
+    "can_use_o_auth2_client_credentials": true,
+    "can_use_smtp_credentials": true
+  },
+  "compartment_id": "ocid1.tenancy.oc1..XXXXX",
+  "defined_tags": {
+    "Oracle-Tags": {
+      "CreatedBy": "scim-service",
+      "CreatedOn": "2020-10-13T22:40:44.709Z"
+    }
+  },
+  "description": "poonia0arun@gmail.com",
+  "email": null,
+  "email_verified": true,
+  "external_identifier": "ac51cd8cdf8c4beb94296b66780049d5",
+  "freeform_tags": {},
+  "id": "ocid1.user.oc1..XXXXX",
+  "identity_provider_id": "ocid1.saml2idp.oc1..XXXXX",
+  "inactive_status": null,
+  "is_mfa_activated": false,
+  "lifecycle_state": "ACTIVE",
+  "name": "oracleidentitycloudservice/poonia0arun@gmail.com",
+  "time_created": "2020-10-13T22:40:44.721000+00:00"
+}
+Get User Details                                                      | PASS |
 ------------------------------------------------------------------------------
-List All Object Addresses                                             .{'@status': 'success', '@code': '19', 'result': {'@total-count': '3', '@count': '3', 'entry': [{'@name': 'test', '@location': 'vsys', '@vsys': 'vsys1', 'ip-netmask': '10.10.10.0/24'}, {'@name': 'test2', '@location': 'vsys', '@vsys': 'vsys1', 'ip-netmask': '10.20.10.0/24'}, {'@name': 'test23', '@location': 'vsys', '@vsys': 'vsys1', 'ip-netmask': '10.23.10.0/24'}]}}
-List All Object Addresses                                             | PASS |
+Get Namespace Details                                                 .aXXXXyrd
+Get Namespace Details                                                 | PASS |
 ------------------------------------------------------------------------------
-List All Security Policies                                            | PASS |
+Create Bucket                                                         .{
+  "approximate_count": null,
+  "approximate_size": null,
+  "compartment_id": "ocid1.tenancy.oc1..XXXXX",
+  "created_by": "ocid1.user.oc1..XXXXX",
+  "defined_tags": {
+    "Oracle-Tags": {
+      "CreatedBy": "oracleidentitycloudservice/poonia0arun@gmail.com",
+      "CreatedOn": "2020-11-17T03:29:25.852Z"
+    }
+  },
+  "etag": "be3ca3bd-3b63-498f-b5b0-e01e28a22162",
+  "freeform_tags": {},
+  "id": "ocid1.bucket.oc1.us-sanjose-1.XXXXX",
+  "is_read_only": false,
+  "kms_key_id": null,
+  "metadata": {},
+  "name": "test-arun",
+  "namespace": "axwj21nkyyrd",
+  "object_events_enabled": false,
+  "object_lifecycle_policy_etag": null,
+  "public_access_type": "NoPublicAccess",
+  "replication_enabled": false,
+  "storage_tier": "Standard",
+  "time_created": "2020-11-17T03:29:25.858000+00:00",
+  "versioning": "Disabled"
+}
+Create Bucket                                                         | PASS |
 ------------------------------------------------------------------------------
-Policy                                                                | PASS |
-3 critical tests, 3 passed, 0 failed
-3 tests total, 3 passed, 0 failed
+List Bucket                                                           .[{
+  "compartment_id": "ocid1.tenancy.oc1..XXXXX",
+  "created_by": "ocid1.user.oc1..XXXXX",
+  "defined_tags": null,
+  "etag": "be3ca3bd-3b63-498f-b5b0-e01e28a22162",
+  "freeform_tags": null,
+  "name": "test-arun",
+  "namespace": "axwj21nkyyrd",
+  "time_created": "2020-11-17T03:29:25.858000+00:00"
+}]
+List Bucket                                                           | PASS |
+------------------------------------------------------------------------------
+Delete Bucket                                                         .None
+Delete Bucket                                                         | PASS |
+------------------------------------------------------------------------------
+Oracle                                                                | PASS |
+5 critical tests, 5 passed, 0 failed
+5 tests total, 5 passed, 0 failed
 ==============================================================================
-Output:  /Users/apoonia/Desktop/paloaltogcp/palo-alto-api-python/test-suites/test_reports/spartan-output-20201017-034007.xml
-Log:     /Users/apoonia/Desktop/paloaltogcp/palo-alto-api-python/test-suites/test_reports/spartan-log-20201017-034007.html
-Report:  /Users/apoonia/Desktop/paloaltogcp/palo-alto-api-python/test-suites/test_reports/spartan-report-20201017-034007.html
+Output:  /Users/apoonia/Desktop/paloaltogcp/palo-alto-oracle-partner/oracle-python/test-suites/test_reports/spartan-output-20201116-192924.xml
+Log:     /Users/apoonia/Desktop/paloaltogcp/palo-alto-oracle-partner/oracle-python/test-suites/test_reports/spartan-log-20201116-192924.html
+Report:  /Users/apoonia/Desktop/paloaltogcp/palo-alto-oracle-partner/oracle-python/test-suites/test_reports/spartan-report-20201116-192924.html
 ```
 
-## Open Items 
-
-I am summarizing few open items: 
-
-1. I noticed official `pan os python sdk` is too old 
-2. PAN OS Rest API doesn't have a swagger file so i couldn't create python sdk file. It would have been easier if they had python sdk for this.
-   - So I ended up consuming REST API CURD operation directly.
+## Feedback
 
 User can use this repository as starting point and enhance it accordingly.
