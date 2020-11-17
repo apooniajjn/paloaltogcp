@@ -31,6 +31,7 @@ Below example show how I am getting addresses information and security policies:
 **Example Output**: 
 
 ```
+(spartan-v1) ➜  test-suites git:(master) ✗ spartan oracle.robot 
 ==============================================================================
 Oracle                                                                        
 ==============================================================================
